@@ -14,6 +14,10 @@ PHPENV_VERSION_FOLDER="$HOME/.phpenv/versions"
 # Define CircleCI PHPENV Versions Folder
 CIRCLE_PHPENV_FOLDER="/opt/circleci/php"
 
+# Enable PEAR
+BUILD_CONFIG="$HOME/.phpenv/plugins/php-build/share/php-build/default_configure_options"
+tail -n +2 "$BUILD_CONFIG" > "$BUILD_CONFIG.tmp" && mv "$BUILD_CONFIG.tmp" "$BUILD_CONFIG"
+
 # Install PHP Version
 phpenv install $PHP_VERSION
 
